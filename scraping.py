@@ -12,7 +12,8 @@ def scrape_all():
     browser = Browser('chrome', **executable_path, headless=True)
 
     news_title, news_paragraph = mars_news(browser)
-    hemisphere_image_urls = []
+    
+    hemisphere_image_urls = mars_hemi(browser)
     # Run all scraping functions and store results in a dictionary
     data = {
         "news_title": news_title,
@@ -20,7 +21,7 @@ def scrape_all():
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
         "last_modified": dt.datetime.now(), 
-        "hemisphere_image_urls" : mars_hemi(browser)
+        "hemisphere" : hemisphere_image_urls
         
         
     }
